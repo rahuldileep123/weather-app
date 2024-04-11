@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-body">
+        <div class="weather-box">
+            <div class="part1">
+                <div class="weath">
+                    <h1>WEATHER</h1>
+                </div>
+                <div id="tempDetails" class="temp">
+                   
+                </div>
+            </div>
+           <div id="otherDetails" class="part2">
+            <input id="city" type="text" placeholder="enter city name"><br>
+            <button onclick="getCity()">search</button>
+            <hr>
+            <h3>WEATHER DETAILS</h3>
+            <p class="head"> country</p>
+            <p class="ans"></p>
+            <P class="head">HUMITDITY</P>
+            <P class="ans"></P>
+            <p class="head">wind</p>
+            <p class="ans"> </p>
+            <p class="head">pressure</p>
+            <p class="ans"></p>
+            <hr>
+           </div>
+        </div>
+    </div>
+</body>
+<script>
+const getCity=async()=>{
+   const cityName=city.value
+   const response= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e&units=metric`)
+const cityDetails= await response.json()
+console.log(cityDetails);
+const dt=cityDetails.dt
+const time=cityDetails.timezone
+function getDate(dt,timezone) {
+    const utc_seconds = parseInt(dt, 10) + parseInt(timezone, 10);
+    const utc_milliseconds = utc_seconds * 1000;
+    const local_date = new Date(utc_milliseconds).toUTCString();
+    return local_date;
+  }
+  locDate=getDate(dt,time)
+  console.log(locDate);
+tempDetails.innerHTML =` <h1>${cityDetails.main.temp}</h1>
+                    <p>it feel like ${cityDetails.main.feels_like}</p>
+                    <p class="name">${cityName}</p>
+                    <p>${locDate}</p>`
+ otherDetails.innerHTML=` <input id="city" type="text" placeholder="enter city name"><br>
+               <button onclick="getCity()">search</button>
+               <hr>
+               <h3>WEATHER DETAILS</h3>
+               <p class="head"> country</p>
+               <p class="ans">${cityDetails.sys.country}</p>
+               <P class="head">HUMITDITY</P>
+               <P class="ans">${cityDetails.main.humidity}</P>
+               <p class="head">wind</p>
+               <p class="ans">${cityDetails.wind.speed}kmph</p>
+               <p class="head">pressure</p>
+               <p class="ans">${cityDetails.main.pressure}</p>
+               <hr>`                   
+
+}
+
+</script>
+</html>

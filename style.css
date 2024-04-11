@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.weather-box{
+    width: 70%;
+    height: 80%;
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/41/367/650/blue-sky-clouds-hot-air-balloons-wallpaper-preview.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+   display: flex;
+    padding: 40px 30px;
+}
+.weath h1{
+    color: white;
+}
+.name{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.part1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.part2{
+    width: 30%;
+    height: 100%;
+    background-color: grey;
+    padding: 10px
+
+}
+.part2 p{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    
+}
+.part2 button{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.head{
+    text-transform: uppercase;
+    font-size: 15px;
+}
+.part2 h3{
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.ans{
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+}
+input{
+    width: 100%;
+    height: 20px;
+}
